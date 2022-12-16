@@ -12,7 +12,7 @@ const Select = ({ label, value, onChange, children }) => {
         <Wrapper>
             {displayedValue}
             <IconWrapper>
-                <Icon id="chevron-down" size="16" strokeWidth={2} />
+                <Icon id="chevron-down" size="24" />
             </IconWrapper>
             <StyledSelect value={value} onChange={onChange}>
                 {children}
@@ -21,10 +21,20 @@ const Select = ({ label, value, onChange, children }) => {
     );
 };
 
+const StyledSelect = styled.select`
+    appereance: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+`
 const Wrapper = styled.div`
     position: relative;
     display: inline-flex;
     padding: 12px 16px;
+    padding-right: 54px;
     background-color: ${COLORS.transparentGray15};
     color: ${COLORS.gray700};
     border-radius: 8px;
@@ -32,13 +42,16 @@ const Wrapper = styled.div`
     &:hover {
         color: ${COLORS.black};
     }
+
+    /* focus styles missing, dom order must change for it to work */
 `
 const IconWrapper = styled.div`
-    margin-left: 24px;
-`
-const StyledSelect = styled.select`
-    opacity: 0;
     position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 24px;
 `
 
 export default Select;
